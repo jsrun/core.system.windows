@@ -46,7 +46,7 @@
     webide.windowRemote = function(url, options){
         webide.getContents("GET", url, null, function(contents){
             $(".wi-window-modal").css("display", "block");
-            $(".wi-window").html(data);
+            $(".wi-window").html(contents);
             $(".wi-window-modal").click(function(){ $(".wi-window-modal").css("display", "none"); });
             $(".wi-window-header-close").click(function(e){ $(".wi-window-modal").css("display", "none"); });
             $(".wi-window").click(function(e){ e.preventDefault(); e.stopPropagation(); });
