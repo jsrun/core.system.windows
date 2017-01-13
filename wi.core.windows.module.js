@@ -22,7 +22,7 @@ module.exports = {
      */
     assets: {
         css: [__dirname + "/wi.core.windows.style.css"],
-        js: [__dirname + "/dragresize.min.js", __dirname + "/wi.core.windows.events.js"]
+        js: [__dirname + "/wi.core.windows.events.js"]
     },
     
     /**
