@@ -13,7 +13,7 @@
 "use strict";
 
 (function(){
-    webide.modal = function(data, options){
+    webide.modal = function(data, options, fn){
         $(".wi-window-modal").css("display", "block");
         $(".wi-window").html(data);
         $(".wi-window-modal").click(function(){ $(".wi-window-modal").css("display", "none"); });
@@ -41,9 +41,12 @@
         $(window).resize(resizeWindow);
         resizeWindow();
         webide.forms.bind();
+        
+        if(typeof fn == "function")
+            fn();
     };
     
-    webide.windowRemote = function(url, options){
+    webide.windowRemote = function(url, options, fn){
         webide.getContents("GET", url, null, function(contents){
             $(".wi-window-modal").css("display", "block");
             $(".wi-window").html(contents);
@@ -72,6 +75,9 @@
             $(window).resize(resizeWindow);
             resizeWindow();
             webide.forms.bind();
+            
+            if(typeof fn == "function")
+                fn();
         });
     };
 })();
