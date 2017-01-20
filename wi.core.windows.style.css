@@ -74,13 +74,13 @@
 .wi-window-main{
     position: absolute;
     width: calc(100% - 30px);
-    height: calc(100% - 91px);
+    height: calc(100% - 101px);
     padding: 15px;
 }
 
 .wi-window-footer{
     position: absolute;
-    height: 20px;
+    height: 28px;
     bottom: 0px;
     left: 0px;
     right: 0px;
