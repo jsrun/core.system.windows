@@ -12,7 +12,7 @@
 
 "use strict";
 
-(function(){
+webide.module("window", function(){
     webide.modal = function(data, options, fn){
         $(".wi-window-modal").css("display", "block");
         $(".wi-window").html(data);
@@ -80,5 +80,5 @@
                 fn();
         });
     };
-})();
+});
 

@@ -8,16 +8,8 @@
                                                                                                                                                                                                                                                                                                            
 ```                                                                                                                                                 
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/jsrun/core.system.settings/master/LICENSE)
-
-WebIDE windows manager
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/jsrun/wi.core.windows/master/LICENSE)
  
-## Usage
-
-```js
-webide.window('/window/open', {'width': 1000, 'height': 550});
-```
-
 ## License
 
   MIT

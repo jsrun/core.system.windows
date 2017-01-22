@@ -15,16 +15,7 @@
 let SystemException = require("../wi.core.exception.js"),
     TemplateEngine = require("../wi.core.template.js");
 
-module.exports = {
-    /**
-     * List module assets
-     * @type object
-     */
-    assets: {
-        css: [__dirname + "/wi.core.windows.style.css"],
-        js: [__dirname + "/wi.core.windows.events.js"]
-    },
-    
+module.exports = {    
     /**
      * Function to generate template
      * 
@@ -32,6 +23,6 @@ module.exports = {
      * @return string
      */
     getTemplate: function(settings, dirname, argv, app, i18n, passport, mongodb, webide){
-        return TemplateEngine(__dirname + "/wi.core.windows.tpl.ejs").seti18n(i18n).render();
+        return TemplateEngine(__dirname + "/template.ejs").seti18n(i18n).render();
     }
 };
