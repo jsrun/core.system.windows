@@ -12,7 +12,7 @@
 
 "use strict";
 
-webide.module("window", function(){
+webide.module("window", function(forms){
     webide.modal = function(data, options, fn){
         $(".wi-window-modal").css("display", "block");
         $(".wi-window").html(data);
@@ -40,7 +40,7 @@ webide.module("window", function(){
 
         $(window).resize(resizeWindow);
         resizeWindow();
-        webide.forms.bind();
+        forms.bind();
         
         if(typeof fn == "function")
             fn();
@@ -74,7 +74,7 @@ webide.module("window", function(){
             
             $(window).resize(resizeWindow);
             resizeWindow();
-            webide.forms.bind();
+            forms.bind();
             
             if(typeof fn == "function")
                 fn();
