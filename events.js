@@ -80,5 +80,9 @@ webide.module("window", function(forms){
                 fn();
         });
     };
+    
+    webide.closeWindow = function(){
+        $(".wi-window-modal").css("display", "none");
+    };
 });
 
