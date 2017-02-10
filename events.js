@@ -18,7 +18,8 @@ webide.module("window", function(forms){
         $(".wi-window").html(data);
         $(".wi-window-modal").click(function(){ $(".wi-window-modal").css("display", "none"); });
         $(".wi-window-header-close").click(function(e){ $(".wi-window-modal").css("display", "none"); });
-        $(".wi-window").click(function(e){ e.preventDefault(); e.stopPropagation(); });
+        $(".wi-btn-cancel").click(function(e){ $(".wi-window-modal").css("display", "none"); });
+        $(".wi-window").click(function(e){ e.preventDefault(); e.stopPropagation(); });        
 
         function resizeWindow(){
             var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth,
@@ -52,6 +53,7 @@ webide.module("window", function(forms){
             $(".wi-window").html(contents);
             $(".wi-window-modal").click(function(){ $(".wi-window-modal").css("display", "none"); });
             $(".wi-window-header-close").click(function(e){ $(".wi-window-modal").css("display", "none"); });
+            $(".wi-btn-cancel").click(function(e){ $(".wi-window-modal").css("display", "none"); });
             $(".wi-window").click(function(e){ e.preventDefault(); e.stopPropagation(); });
             
             function resizeWindow(){
@@ -79,6 +81,54 @@ webide.module("window", function(forms){
             if(typeof fn == "function")
                 fn();
         });
+    };
+    
+    webide.windowFormBuilder = function(title, schema, options, fn){
+        var id = new Date().getTime();
+        var buttons = "";
+        
+        if(options.createbutton)
+            buttons += "<button class='wi-btn wi-btn-ok'>Send</button>\r\n";
+        if(options.cancelbutton)
+            buttons += "<button class='wi-btn wi-btn-cancel'>Cancel</button>\r\n";
+        
+        webide.modal('<div class="wi-window-header">'+
+                     '   <div class="wi-window-header-title">' + title + '</div>'+
+                     '   <div class="wi-window-header-close" title="Close"><i class="fa fa-times" aria-hidden="true"></i></div>'+
+                     '</div>'+
+                     '<div class="wi-window-main"><form id="form-' + id + '"></form></div>'+
+                     '<div class="wi-window-footer">'+
+                     '   <div class="float-right">' + buttons + '</div>'+
+                     '</div>', options, function(){
+                        $(".wi-window-main form").formRender({formData: schema, dataType: 'json'});
+                        
+                        if(typeof fn == "function")
+                            fn("#form-" + id);
+                    });        
+    };
+    
+    webide.confirm = function(title, question, options, fn){
+        var id = new Date().getTime();
+        var buttons = "";
+        
+        buttons += "<button class='wi-btn wi-btn-ok'>Yes</button>\r\n";
+        buttons += "<button class='wi-btn wi-btn-cancel'>No</button>\r\n";
+        
+        webide.modal('<div class="wi-window-header">'+
+                     '   <div class="wi-window-header-title">' + title + '</div>'+
+                     '   <div class="wi-window-header-close" title="Close"><i class="fa fa-times" aria-hidden="true"></i></div>'+
+                     '</div>'+
+                     '<div class="wi-window-main">' + question + '</div>'+
+                     '<div class="wi-window-footer">'+
+                     '   <div class="float-right">' + buttons + '</div>'+
+                     '</div>', options, function(){
+                        $(".wi-btn-ok").click(function(){
+                            webide.closeWindow();
+                            
+                            if(typeof fn == "function")
+                                fn();
+                        });                        
+                    }); 
     };
     
     webide.closeWindow = function(){

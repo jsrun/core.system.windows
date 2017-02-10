@@ -75,6 +75,8 @@
     position: absolute;
     width: calc(100% - 30px);
     height: calc(100% - 101px);
+    color: var(--wi-default-bg-color);
+    font-size: 12px;
     padding: 15px;
 }
 
